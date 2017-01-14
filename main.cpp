@@ -5,4 +5,12 @@
 */
 
 
-#include "tex_functions.h"
+#include "texfunctions.h"
+
+
+int main(){
+
+  objLine test_data ("hello", 2);
+
+
+}
