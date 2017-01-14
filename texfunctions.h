@@ -23,7 +23,11 @@ class objLine {
 public:
   objLine() {}; //Default Constructor
   objLine(string line, int number_of_dashes); //Constructor for the class
-  virtual ~objLine(); //Destructor
+  ~objLine(); //Destructor
+
+  //accessor functions
+  string getNote();
+  int getDashes();
 
 private:
   int intDashes; //Number of dashes to sort the points from subpoints

@@ -15,10 +15,23 @@
 
 
 objLine::objLine (string line, int number_of_dashes){
-  cout << "Reached Here";
+
+  strLine = line;
+  intDashes = number_of_dashes;
+
 }
+
 
 objLine::~objLine (){
   strLine = "";
   intDashes = 0;
+}
+
+
+string objLine::getNote(){
+  return strLine;
+}
+
+int objLine::getDashes(){
+  return intDashes;
 }
