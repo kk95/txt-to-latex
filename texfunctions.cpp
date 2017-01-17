@@ -15,7 +15,7 @@
 
 
 objLine::objLine (string line, int number_of_dashes){
-
+  line.erase (remove(line.begin(),line.end(), '-'), line.end());
   strLine = line;
   intDashes = number_of_dashes;
 

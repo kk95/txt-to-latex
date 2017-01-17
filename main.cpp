@@ -39,29 +39,44 @@ int readFile(string strFile, vector<objLine*> vec) {
                     // string) is required by the getline method
   string strLine;   // string version of the line read (pLine) so thata
                     // we can work with the data as an STL type
-
+  int nDashes = 0;  // nDashes has the number of dashes for a note to identify
+                    // points from their sub points
 
   // process the input file
   while (infile.getline(pLine, 256) != NULL) {
 
     strLine = pLine; // convert char* to string
                      //cout << ++nLineNo << ": " << strLine << endl;
-    
-    vec.push_back(new objLine(strLine, 1));
+    nDashes = 0;
+    nDashes = count(strLine.begin(), strLine.end(), '-');
+    vec.push_back(new objLine(strLine, nDashes));
   }
 
 
-  //loop to go through element,skipped some elements that the assignment did not ask for
-  //set column width to 3 using info from the note posted by prof. heines on piazza
-  //(September 15, 2015)
+  //This reader only takes into consideration that the notes are an itemized
+  //list, future implementation will have cases for any type of line
 
-
+  cout << "\\begin{itemize}" << endl;
   for (vector<objLine*>::iterator it = vec.begin(); it != vec.end(); ++it) {
+    int i = (*it)->getDashes();
+      if(i>1)
+      {
+          cout << "    \\begin{itemize}" << endl;
+          for(; (*it)->getDashes() != 1; it++)
+          {
+          cout << "    \\item "<< (*it)->getNote() << endl;
+          }
+          cout << "    \\end{itemize}" << endl;
+          cout << "\\item " << (*it)->getNote() << endl;
+      }
 
-      cout << setw(3) << (*it)->getDashes() << " : " << (*it)->getNote() << endl;
+      else{
+          cout << "\\item " << (*it)->getNote() << endl;
+      }
+
 
   }
-
+  cout << "\\end{itemize}";
 
 
   // close the input file

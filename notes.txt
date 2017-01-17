@@ -1,5 +1,9 @@
--hello, its me a mario
--this
---is
--a
--test
+-What is this course about?
+--Functional programming
+--Imperitive Programming
+--Recursion
+-Fundamental Model of Computing is
+-he
+--does
+--this
+-work
